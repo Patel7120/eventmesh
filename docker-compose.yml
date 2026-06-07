@@ -1,0 +1,39 @@
+services:
+
+  api:
+    build: .
+    container_name: eventmesh-api
+
+    ports:
+      - "8000:8000"
+
+    volumes:
+      - .:/app
+
+    env_file:
+      - .env
+
+    depends_on:
+      - postgres
+      - redis
+
+  postgres:
+    image: postgres:17
+
+    container_name: eventmesh-postgres
+
+    environment:
+      POSTGRES_DB: eventmesh
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: postgres
+
+    ports:
+      - "5432:5432"
+
+  redis:
+    image: redis:7-alpine
+
+    container_name: eventmesh-redis
+
+    ports:
+      - "6379:6379"

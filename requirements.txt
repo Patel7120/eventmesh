@@ -1,0 +1,17 @@
+fastapi
+uvicorn[standard]
+
+sqlalchemy
+alembic
+
+psycopg[binary]
+
+redis
+
+pydantic
+pydantic-settings
+
+pytest
+
+black
+ruff
